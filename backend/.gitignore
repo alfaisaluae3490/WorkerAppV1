@@ -1,20 +1,33 @@
-# Node / Next
+# backend/.gitignore
+
+# Dependencies
 node_modules/
-.next/
-dist/
-build/
+package-lock.json
+
+# Environment variables
 .env
 .env.local
-.DS_Store
-.vscode/
-coverage/
-*.log
+.env.production
 
-# Uploads, caches, large media
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Uploads (if storing locally)
 uploads/
-tmp/
-cache/
-images/originals/
-*.zip
-*.mp4
-*.mov
+temp/
+
+# Build files
+dist/
+build/

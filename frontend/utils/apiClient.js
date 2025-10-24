@@ -243,3 +243,51 @@ export const isAuthenticated = () => {
 };
 
 export default apiClient;
+// ============================================
+// BIDS API CALLS
+// ============================================
+
+export const bidsAPI = {
+  // Place a bid
+  placeBid: async (data) => {
+    const response = await apiClient.post('/bids', data);
+    return response.data;
+  },
+
+  // Get all bids for a job (customer)
+  getJobBids: async (jobId) => {
+    const response = await apiClient.get(`/bids/job/${jobId}`);
+    return response.data;
+  },
+
+  // Get my bids (worker)
+  getMyBids: async (status = null) => {
+    const params = status ? `?status=${status}` : '';
+    const response = await apiClient.get(`/bids/my${params}`);
+    return response.data;
+  },
+
+  // Get single bid details
+  getBid: async (bidId) => {
+    const response = await apiClient.get(`/bids/${bidId}`);
+    return response.data;
+  },
+
+  // Accept a bid (customer)
+  acceptBid: async (bidId) => {
+    const response = await apiClient.put(`/bids/${bidId}/accept`);
+    return response.data;
+  },
+
+  // Reject a bid (customer)
+  rejectBid: async (bidId) => {
+    const response = await apiClient.put(`/bids/${bidId}/reject`);
+    return response.data;
+  },
+
+  // Withdraw a bid (worker)
+  withdrawBid: async (bidId) => {
+    const response = await apiClient.delete(`/bids/${bidId}`);
+    return response.data;
+  },
+};
